@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object cards</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+        <style>
+#img123{
+    height: 100px;
+}
+
+        </style>
+
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <div class="row" id="product">
+
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table" id="table_id">
+                          
+                                
+                           
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        var a = [];
+        function func(b) {
+            var name = b.getAttribute("data-name");
+            var price = b.getAttribute("data-price");
+            var img = b.getAttribute("data-img");
+
+            var obj = {
+                name: name,
+                price: price,
+                img: img,
+            }
+            a.push(obj);
+            localStorage.setItem("kfc", JSON.stringify(a));
+            var get = JSON.parse(localStorage.getItem("kfc"));
+            var table = "<tr> <th>Name</th> <th>Price</th>  <th>Image</th> </tr>";
+            for (let i = 0; i < a.length; i++) {
+                table += "<tr> <td>" + get[i].name +"</td> <td>" + get[i].price + "</td> <td>" + "<img id= 'img123' src = " + get[i].img + ">" +
+                    "</td> <td>" + "<button class= 'btn-close' onclick= 'del()'> </button>" +
+                    "</td></tr>"
+            }
+            document.getElementById("table_id").innerHTML = table;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+    <script src="javascript.js"></script>
+</body>
+
+</html>
